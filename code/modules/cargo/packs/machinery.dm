@@ -126,6 +126,39 @@
 	crate_name = "power cell crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
 
+/datum/supply_pack/machinery/researchserver
+	name = "Research Server Crate"
+	desc = "The circuit board for a research server and techfab.  How fancy!"
+	cost = 4000
+	contains = list(/obj/item/circuitboard/machine/rdserver,
+					/obj/item/circuitboard/computer/rdconsole)
+	crate_name = "RnD Server crate"
+	crate_type = /obj/structure/closet/crate/secure/science
+
+/datum/supply_pack/machinery/ore_silo
+	name = "Ore Silo Crate"
+	desc = "A circuit board used in the construction of an ore silo, cannot be linked to the autolathe."
+	cost = 1000
+	contains = list(/obj/item/circuitboard/machine/ore_silo)
+	crate_name = "\improper ore silo crate"
+	crate_type = /obj/structure/closet/crate/engineering/electrical
+
+/datum/supply_pack/machinery/circuit_imprinter
+	name = "Research Circuit Imprinter Crate"
+	desc = "The circuitboard for a circuit imprinter, capable of manufacturing more circuit boards.  Requires RnD server."
+	cost = 3000
+	contains = list(/obj/item/circuitboard/machine/circuit_imprinter/department/science)
+	crate_name = "\improper circuit imprinter crate"
+	crate_type = /obj/structure/closet/crate/engineering/electrical
+
+/datum/supply_pack/machinery/protolathe
+	name = "Research Protolathe"
+	desc = "The circuitboard for the most powerful type of autolathe technology can offer.  Requires RnD server."
+	cost = 3000
+	contains = list(/obj/item/circuitboard/machine/protolathe/department/science)
+	crate_name = "\improper protolathe crate"
+	crate_type = /obj/structure/closet/crate/engineering/electrical
+
 /*
 		Atmospherics
 */
