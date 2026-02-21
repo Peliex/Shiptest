@@ -40,6 +40,8 @@
 	/// The color of the limb's overlay
 	var/species_secondary_color
 
+	var/species_complimentary_color
+
 	var/body_zone //BODY_ZONE_CHEST, BODY_ZONE_L_ARM, etc , used for def_zone
 	/// The body zone of this part in english ("chest", "left arm", etc) without the species attached to it
 	var/plaintext_zone
@@ -990,6 +992,9 @@
 
 		if(overlay_icon_state)
 			species_secondary_color = H.dna.features["mcolor2"]
+
+		if(overlay_icon_state)
+			species_complimentary_color = H.dna.features["mcolor3"]
 
 		UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 

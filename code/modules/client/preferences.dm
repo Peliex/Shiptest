@@ -88,6 +88,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/features = list(
 							"mcolor" = "FFF",
 							"mcolor2" = "FFF",
+							"mcolor3" = "FFF",
 							"grad_style" = "None",
 							"grad_color" = "FFF",
 							"ethcolor" = "9c3030",
@@ -481,6 +482,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=mutant_color;task=input'>Change</a><BR>"
 			dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=mutant_color_2;task=input'>Change</a><BR>"
+			dat += "<span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='byond://?_src_=prefs;preference=mutant_color_3;task=input'>Change</a><BR>"
 
 			if(istype(pref_species, /datum/species/elzuose)) //not the best thing to do tbf but I dont know whats better.
 
@@ -1911,6 +1913,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						else
 							to_chat(user, span_danger("Invalid color. Your color is not bright enough."))
 
+				if("mutant_color_3")
+					var/new_mutantcolor = input(user, "Choose your character's complimentary alien/mutant color:", "Character Preference","#" + features["mcolor3"]) as color|null
+					if(new_mutantcolor)
+						var/temp_hsv = RGBtoHSV(new_mutantcolor)
+						if(new_mutantcolor == "#000000")
+							features["mcolor3"] = pref_species.default_color
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#191919")[3]) // mutantcolors must be bright, but only if they affect the skin
+							features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
+						else
+							to_chat(user, span_danger("Invalid color. Your color is not bright enough."))
+
 				if("color_ethereal")
 					var/new_etherealcolor = input(user, "Choose your elzuose color:", "Character Preference","#"+features["ethcolor"]) as color|null
 					if(new_etherealcolor)
@@ -2646,6 +2659,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_part.draw_color = features["mcolor"]
 				if(new_part.overlay_icon_state)
 					new_part.species_secondary_color = features["mcolor2"]
+				if(new_part.overlay_icon_state)
+					new_part.species_complimentary_color = features["mcolor3"]
 				new_part.replace_limb(character, TRUE)
 				new_part.update_limb(is_creating = TRUE)
 

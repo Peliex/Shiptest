@@ -114,9 +114,9 @@
 
 /datum/sprite_accessory/horns
 	icon = 'icons/mob/species/lizard/horns.dmi'
-	color_src = MUTCOLORS_SECONDARY
+	color_src = MUTCOLORS_COMPLIMENTARY
 	body_zone = BODY_ZONE_HEAD
-	synthetic_color_src = MUTCOLORS_SECONDARY
+	synthetic_color_src = MUTCOLORS_COMPLIMENTARY
 
 /datum/sprite_accessory/horns/none
 	name = "None"
