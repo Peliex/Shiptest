@@ -132,6 +132,8 @@
 #define MUTCOLORS_SECONDARY 25
 ///Human skintones
 #define SKINCOLORS 26
+///A third mutant colour for even more things
+#define MUTCOLORS_COMPLIMENTARY 27
 
 //organ slots
 #define ORGAN_SLOT_BRAIN "brain"

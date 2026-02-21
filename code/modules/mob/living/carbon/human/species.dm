@@ -1031,7 +1031,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 							accessory_overlay.color = "#[H.dna.features["mcolor2"]]"
 						if(SKINCOLORS)
 							accessory_overlay.color = "#[(skintone2hex(H.skin_tone))]"
-
+						if(MUTCOLORS_COMPLIMENTARY)
+							accessory_overlay.color = "#[H.dna.features["mcolor3"]]"
 						if(HAIR)
 							if(hair_color == "mutcolor")
 								accessory_overlay.color = "#[H.dna.features["mcolor"]]"

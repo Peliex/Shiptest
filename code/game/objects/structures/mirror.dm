@@ -195,6 +195,17 @@
 						else
 							to_chat(H, span_notice("Invalid color. Your secondary color is not bright enough."))
 
+				if(MUTCOLORS_COMPLIMENTARY in H.dna.species.species_traits)
+					var/new_complimentary_mutantcolor = input(user, "Choose your complimentary skin color:", "Race change","#" + H.dna.features["mcolor3"]) as color|null
+					if(new_complimentary_mutantcolor)
+						var/temp_hsv = RGBtoHSV(new_complimentary_mutantcolor)
+
+						if(ReadHSV(temp_hsv)[3] >= ReadHSV("#191919")[3]) // mutantcolors must be bright
+							H.dna.features["mcolor3"] = sanitize_hexcolor(new_complimentary_mutantcolor)
+
+						else
+							to_chat(H, span_notice("Invalid color. Your complimentary color is not bright enough."))
+
 			H.update_body()
 			H.update_hair()
 			H.update_body_parts(TRUE)

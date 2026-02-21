@@ -461,6 +461,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	native_language ||= /datum/language/galactic_common
 	READ_FILE(S["feature_mcolor"], features["mcolor"])
 	READ_FILE(S["feature_mcolor2"], features["mcolor2"])
+	READ_FILE(S["feature_mcolor3"], features["mcolor3"])
 	READ_FILE(S["feature_ethcolor"], features["ethcolor"])
 	READ_FILE(S["feature_lizard_tail"], features["tail_lizard"])
 	READ_FILE(S["feature_lizard_face_markings"], features["face_markings"])
@@ -586,6 +587,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["grad_color"]				= sanitize_hexcolor(features["grad_color"])
 	features["mcolor"]					= sanitize_hexcolor(features["mcolor"])
 	features["mcolor2"]					= sanitize_hexcolor(features["mcolor2"])
+	features["mcolor3"]                 = sanitize_hexcolor(features["mcolor3"])
 	features["ethcolor"]				= copytext_char(features["ethcolor"], 1, 7)
 	features["tail_lizard"]				= sanitize_inlist(features["tail_lizard"], GLOB.tails_list_lizard)
 	features["tail_human"]				= sanitize_inlist(features["tail_human"], GLOB.tails_list_human, "None")
@@ -663,6 +665,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["native_language"]				, native_language)
 	WRITE_FILE(S["feature_mcolor"]				, features["mcolor"])
 	WRITE_FILE(S["feature_mcolor2"]				, features["mcolor2"])
+	WRITE_FILE(S["feature_mcolor3"]             , features["mcolor3"])
 	WRITE_FILE(S["feature_ethcolor"]			, features["ethcolor"])
 	WRITE_FILE(S["feature_lizard_tail"]			, features["tail_lizard"])
 	WRITE_FILE(S["feature_human_tail"]			, features["tail_human"])
