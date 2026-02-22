@@ -2,6 +2,7 @@ SUBSYSTEM_DEF(autotransfer)
 	name = "Autotransfer Vote"
 	flags = SS_KEEP_TIMING | SS_BACKGROUND
 	wait = 1 MINUTES
+	can_fire = SS_NO_FIRE
 
 	COOLDOWN_DECLARE(next_vote)
 
