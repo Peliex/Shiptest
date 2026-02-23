@@ -1,0 +1,4 @@
+author: Senefi
+changes:
+  - {server: No more autotransfer}
+delete-after: true
