@@ -616,6 +616,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["vox_neck_quills"]			= sanitize_inlist(features["vox_neck_quills"], GLOB.vox_neck_quills_list, "None")
 	features["elzu_horns"]				= sanitize_inlist(features["elzu_horns"], GLOB.elzu_horns_list)
 	features["tail_elzu"]				= sanitize_inlist(features["tail_elzu"], GLOB.tails_list_elzu)
+	features["experiment_headspikes"]	= sanitize_inlist(features["experiment_headspikes"], GLOB.tails_list_elzu)
+	features["tail_experiment"]			= sanitize_inlist(features["tail_experiment"], GLOB.tails_list_experiment)
 	features["flavor_text"]				= sanitize_text(features["flavor_text"], initial(features["flavor_text"]))
 
 	all_quirks = SANITIZE_LIST(all_quirks)

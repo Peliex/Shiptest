@@ -927,6 +927,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					S = GLOB.tails_list_lizard[H.dna.features["tail_lizard"]]
 				if("waggingtail_lizard")
 					S = GLOB.animated_tails_list_lizard[H.dna.features["tail_lizard"]]
+				if("tail_experiment")
+					S = GLOB.tails_list_experiment[H.dna.features["tail_experiment"]]
+				if("experiment_headspikes")
+					S = GLOB.headspikes_list[H.dna.features["experiment_headspikes"]]
 				if("tail_human")
 					S = GLOB.tails_list_human[H.dna.features["tail_human"]]
 				if("waggingtail_human")

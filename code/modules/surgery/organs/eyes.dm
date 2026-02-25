@@ -100,6 +100,16 @@
 	desc = "Very similar to human eyes in functionality, only visible difference being the different shade of white."
 	sclera_color = "fffec4"
 
+/obj/item/organ/eyes/lizard
+	name = "lizard eyes"
+	desc = "Very similar to human eyes in functionality, only visible difference being the different shade of white."
+	sclera_color = "ffffff"
+
+/obj/item/organ/eyes/experiment
+	name = "experiment eyes"
+	desc = "A set of eyes with blazing orange sclera."
+	eye_icon_state = "eyes_experiment"
+
 /obj/item/organ/eyes/night_vision
 	name = "shadow eyes"
 	desc = "A spooky set of eyes that can see in the dark."

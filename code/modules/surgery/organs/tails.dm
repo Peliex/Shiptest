@@ -215,3 +215,24 @@
 		H.dna.species.mutant_bodyparts -= "tail_human"
 		color = H.hair_color
 		H.update_body()
+
+/obj/item/organ/tail/experiment
+	name = "experiment tail"
+	desc = "A severed tail of a experimental creature"
+	tail_type = "Default"
+
+/obj/item/organ/tail/experiment/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
+	..()
+	if(istype(H))
+		if(!("tail_experiment" in H.dna.species.mutant_bodyparts))
+			H.dna.species.mutant_bodyparts |= "tail_experiment"
+			H.dna.features["tail_experiment"] = tail_type
+			H.update_body()
+
+/obj/item/organ/tail/experiment/Remove(mob/living/carbon/human/H,  special = 0)
+	..()
+	if(istype(H))
+		H.dna.features["tail_experiment"] = "None"
+		H.dna.species.mutant_bodyparts -= "tail_experiment"
+		color = H.hair_color
+		H.update_body()
