@@ -95,6 +95,6 @@ DEFINE_BITFIELD(food_types, list(
 #define FOOD_TRASH_POPABLE (1<<0)
 #define FOOD_TRASH_OPENABLE (1<<1)
 
-#define FOOD_LIKED 1
-#define FOOD_DISLIKED 2
-#define FOOD_TOXIC 3
+#define FOOD_LIKED (1<<0)
+#define FOOD_DISLIKED (1<<1)
+#define FOOD_TOXIC (1<<2)

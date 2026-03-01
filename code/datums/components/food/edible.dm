@@ -463,25 +463,35 @@ Behavior that's still missing from this component that original food items had t
 
 	if(!food_taste_reaction)
 		if(foodtypes & human_eater.dna.species.toxic_food)
-			food_taste_reaction = FOOD_TOXIC
-		else if(foodtypes & human_eater.dna.species.disliked_food)
-			food_taste_reaction = FOOD_DISLIKED
+			food_taste_reaction |= FOOD_TOXIC
+		if(foodtypes & human_eater.dna.species.disliked_food)
+			food_taste_reaction |= FOOD_DISLIKED
 		else if(foodtypes & human_eater.dna.species.liked_food)
-			food_taste_reaction = FOOD_LIKED
+			food_taste_reaction |= FOOD_LIKED
 
-	switch(food_taste_reaction)
-		if(FOOD_TOXIC)
-			to_chat(human_eater, span_warning("What the hell was that thing?!"))
-			human_eater.adjust_disgust(25 + 30 * fraction)
-			SEND_SIGNAL(human_eater, COMSIG_ADD_MOOD_EVENT, "toxic_food", /datum/mood_event/disgusting_food)
-		if(FOOD_DISLIKED)
-			to_chat(human_eater, span_notice("That didn't taste very good..."))
-			human_eater.adjust_disgust(11 + 15 * fraction)
-			SEND_SIGNAL(human_eater, COMSIG_ADD_MOOD_EVENT, "gross_food", /datum/mood_event/gross_food)
-		if(FOOD_LIKED)
-			to_chat(human_eater, span_notice("I love this taste!"))
-			human_eater.adjust_disgust(-5 + -2.5 * fraction)
-			SEND_SIGNAL(human_eater, COMSIG_ADD_MOOD_EVENT, "fav_food", /datum/mood_event/favorite_food)
+	if((food_taste_reaction == FOOD_TOXIC) || ((food_taste_reaction & FOOD_TOXIC) && (food_taste_reaction & FOOD_DISLIKED) && (food_taste_reaction & FOOD_LIKED))) //just toxic food, or everything since the toxicity would stand out above slightly liking and disliking it.
+		to_chat(human_eater, span_warning("What the hell was that thing?!"))
+		human_eater.adjust_disgust(25 + 30 * fraction)
+		SEND_SIGNAL(human_eater, COMSIG_ADD_MOOD_EVENT, "toxic_food", /datum/mood_event/disgusting_food)
+	else if((food_taste_reaction & FOOD_TOXIC) && (food_taste_reaction & FOOD_DISLIKED)) //toxic and disliked food
+		to_chat(human_eater, span_warning("Why the hell am I eating this?!!"))
+		human_eater.adjust_disgust(40 + 60 * fraction)
+		SEND_SIGNAL(human_eater, COMSIG_ADD_MOOD_EVENT, "toxic_food", /datum/mood_event/worst_food)
+	else if((food_taste_reaction & FOOD_TOXIC) && food_taste_reaction & FOOD_LIKED) //toxic and liked food
+		to_chat(human_eater, span_notice("This tastes great, but I don't feel so good."))
+		human_eater.adjust_disgust(6 + 5 * fraction)
+		SEND_SIGNAL(human_eater, COMSIG_ADD_MOOD_EVENT, "fav_food", /datum/mood_event/favorite_food)
+	if((food_taste_reaction & FOOD_DISLIKED) && !((food_taste_reaction & FOOD_LIKED) || (food_taste_reaction & FOOD_TOXIC))) //just disliked food
+		to_chat(human_eater, span_notice("That didn't taste very good..."))
+		human_eater.adjust_disgust(11 + 15 * fraction)
+		SEND_SIGNAL(human_eater, COMSIG_ADD_MOOD_EVENT, "gross_food", /datum/mood_event/gross_food)
+	if((food_taste_reaction & FOOD_LIKED) && !((food_taste_reaction & FOOD_DISLIKED) || (food_taste_reaction & FOOD_TOXIC))) //just liked food
+		to_chat(human_eater, span_notice("I love this taste!"))
+		human_eater.adjust_disgust(-5 + -2.5 * fraction)
+		SEND_SIGNAL(human_eater, COMSIG_ADD_MOOD_EVENT, "fav_food", /datum/mood_event/favorite_food)
+	if((food_taste_reaction & FOOD_LIKED) && (food_taste_reaction & FOOD_DISLIKED))
+		to_chat(human_eater, span_notice("I can't tell if I love or hate what I'm eating."))
+
 
 ///Delete the item when it is fully eaten
 /datum/component/edible/proc/on_consume(mob/living/eater, mob/living/feeder)

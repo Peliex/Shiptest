@@ -9,8 +9,8 @@
 	mutant_bodyparts = list("tail_experiment", "experiment_headspikes")
 	mutant_organs = list(/obj/item/organ/tail/experiment)
 	default_features = list("tail_experiment" = "Default", "experiment_headspikes" = "Default")
-	coldmod = 1.5
-	heatmod = 0.67
+	coldmod = 0.67
+	heatmod = 1.5
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
@@ -18,12 +18,21 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/corgi
 	exotic_bloodtype = "L"
 	disliked_food = GORE | CLOTH | GROSS
-	liked_food = GORE | MEAT
+	liked_food = SUGAR | MEAT
+	toxic_food = TOXIC | SUGAR
 	deathsound = 'sound/voice/lizard/deathsound.ogg'
 	species_language_holder = /datum/language_holder/lizard
 	mutanteyes = /obj/item/organ/eyes/experiment
 	sclera_color = "#fffec4"
 	blush_color = COLOR_BLUSH_PINK
+
+	bodytemp_heat_damage_limit = HUMAN_BODYTEMP_HEAT_DAMAGE_LIMIT - 6
+	bodytemp_cold_damage_limit = HUMAN_BODYTEMP_COLD_DAMAGE_LIMIT - 35
+
+	max_temp_comfortable = HUMAN_BODYTEMP_NORMAL
+	min_temp_comfortable = HUMAN_BODYTEMP_NORMAL + 40
+
+	bodytemp_autorecovery_divisor = HUMAN_BODYTEMP_AUTORECOVERY_DIVISOR + 2
 
 	species_limbs = list(
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/experiment,
@@ -45,7 +54,7 @@
 
 	robotic_eyes = /obj/item/organ/eyes/robotic/glow
 
-	loreblurb = "The Sarathi are a cold-blooded reptilian species originating from the planet Kalixcis, where they evolved alongside the Elzuosa. Kalixcian culture places no importance on blood-bonds, and those from it tend to consider their family anyone they are sufficiently close to, and choose their own names."
+	loreblurb = "A short-statured weird dog-rat-person, with 3 soft spike-esque extrusions protruding from the back of their head. Their head looks rodent-shaped. While they're a bit awkward, they don't have any particularly unique characteristics. They are renowned for being extremely cheap to produce and maintain in mass, allowing for corporations to have expendable employees for more hazardous operations."
 
 	ass_image = 'icons/ass/assmale.png'
 
