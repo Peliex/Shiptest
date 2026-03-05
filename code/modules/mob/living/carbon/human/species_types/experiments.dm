@@ -30,7 +30,7 @@
 	bodytemp_cold_damage_limit = HUMAN_BODYTEMP_COLD_DAMAGE_LIMIT - 35
 
 	max_temp_comfortable = HUMAN_BODYTEMP_NORMAL
-	min_temp_comfortable = HUMAN_BODYTEMP_NORMAL + 40
+	min_temp_comfortable = HUMAN_BODYTEMP_NORMAL - 40
 
 	bodytemp_autorecovery_divisor = HUMAN_BODYTEMP_AUTORECOVERY_DIVISOR + 2
 
