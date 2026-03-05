@@ -1954,6 +1954,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_tail)
 						features["tail_experiment"] = new_tail
 
+				if("experiment_headspikes")
+					var/new_headspikes
+					new_headspikes = input(user, "Choose your character's headspikes:", "Character Preference") as null|anything in GLOB.headspikes_list
+					if(new_headspikes)
+						features["experiment_headspikes"] = new_headspikes
+
 				if("face_markings")
 					var/new_face_markings
 					new_face_markings = input(user, "Choose your character's face markings:", "Character Preference") as null|anything in GLOB.face_markings_list
