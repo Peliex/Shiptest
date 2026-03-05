@@ -60,6 +60,20 @@
 
 	ass_image = 'icons/ass/assmale.png'
 
+/datum/species/experiment/on_species_gain(mob/living/carbon/_carbon, datum/species/old_species, pref_load)
+	. = ..()
+	if(!ishuman(_carbon))
+		return
+	var/datum/component/mood/mood = _carbon.GetComponent(/datum/component/mood)
+	if(mood)
+		mood.mood_modifier += 0.5
+
+/datum/species/experiment/on_species_loss(mob/living/carbon/human/_carbon, datum/species/new_species, pref_load)
+	var/datum/component/mood/mood = _carbon.GetComponent(/datum/component/mood)
+	if(mood)
+		mood.mood_modifier -= 0.5
+	return ..()
+
 /datum/species/experiment/spec_life(mob/living/carbon/human/expie)
 	if(expie.stat == DEAD)
 		return
