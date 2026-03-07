@@ -22,7 +22,7 @@
 	disliked_food = GORE | CLOTH | GROSS
 	liked_food = SUGAR | MEAT
 	toxic_food = TOXIC | SUGAR
-	deathsound = 'sound/voice/lizard/deathsound.ogg'
+	deathsound = 'sound/voice/experiment/expie_death.ogg'
 	species_language_holder = /datum/language_holder/lizard
 	mutanteyes = /obj/item/organ/eyes/experiment
 	sclera_color = "#fffec4"
@@ -66,7 +66,7 @@
 		return
 	var/datum/component/mood/mood = _carbon.GetComponent(/datum/component/mood)
 	if(mood)
-		mood.mood_modifier += 0.5
+		mood.mood_modifier += 0.5 //equal to hypersensitive. really strong and also really bad sometimes.
 
 /datum/species/experiment/on_species_loss(mob/living/carbon/human/_carbon, datum/species/new_species, pref_load)
 	var/datum/component/mood/mood = _carbon.GetComponent(/datum/component/mood)
