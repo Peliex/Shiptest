@@ -74,27 +74,35 @@
 	if(isnull(dir))
 		dir = movable_parent.dir
 	movable_parent.set_glide_size(DELAY_TO_GLIDE_SIZE(vehicle_move_delay))
+	handle_vehicle_offsets(dir)
+	handle_vehicle_layer(dir)
 	for(var/mob/living/m as anything in movable_parent.buckled_mobs)
 		ride_check(m)
 		m.set_glide_size(movable_parent.glide_size)
-	handle_vehicle_offsets(dir)
-	handle_vehicle_layer(dir)
 
 /datum/component/riding/proc/vehicle_turned(datum/source, _old_dir, new_dir)
 	SIGNAL_HANDLER
 	vehicle_moved(source, dir=new_dir)
 
 /datum/component/riding/proc/ride_check(mob/living/M)
+	. = TRUE
 	var/atom/movable/AM = parent
-	var/mob/AMM = AM
-	var/kick_us_off
+	var/mob/living/AMM = AM
+
 	if((ride_check_rider_restrained && HAS_TRAIT(M, TRAIT_RESTRAINED)) || (ride_check_rider_incapacitated && M.incapacitated(TRUE, TRUE)))
-		kick_us_off = TRUE
-	if(kick_us_off || (istype(AMM) && ((ride_check_ridden_restrained && HAS_TRAIT(AMM, TRAIT_RESTRAINED)) || (ride_check_ridden_incapacitated && AMM.incapacitated(TRUE, TRUE)))))
-		M.visible_message(span_warning("[M] falls off of [AM]!"), \
-						span_warning("You fall off of [AM]!"))
-		AM.unbuckle_mob(M)
-	return TRUE
+		. = FALSE
+	if(AMM?.body_position)
+		. = FALSE
+	if((istype(AMM) && ((ride_check_ridden_restrained && HAS_TRAIT(AMM, TRAIT_RESTRAINED)) || (ride_check_ridden_incapacitated && AMM.incapacitated(TRUE, TRUE)))))
+		. = FALSE
+	if(.)
+		return
+	M.visible_message(span_warning("[M] falls off of [AM]!"), \
+					span_warning("You fall off of [AM]!"))
+	AM.unbuckle_mob(M)
+	M.Paralyze(1 SECONDS)
+	M.Knockdown(4 SECONDS)
+
 
 /datum/component/riding/proc/force_dismount(mob/living/M, gentle = FALSE)
 	var/atom/movable/AM = parent
