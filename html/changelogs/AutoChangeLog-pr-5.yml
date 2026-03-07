@@ -1,0 +1,8 @@
+author: Diamond-74
+changes:
+  - {bugfix: Runtimes from losing a reference to the vehicle when unbuckled}
+  - {code_imp: Piggy-backing drops the rider if the vehicle is laying down}
+  - {refactor: 'Code is made shorter and starts true and is turned false so that if
+      something prompts a kick-off from the vehicle, it is less likely to error out
+      from a check being weird and possibly re-setting the kick-off to false.'}
+delete-after: true
