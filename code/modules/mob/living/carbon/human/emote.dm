@@ -69,6 +69,8 @@
 		return 'sound/voice/vox/vox_scream_1.ogg'
 	else if(islizard(H))
 		return pick('sound/voice/lizard/lizard_scream_1.ogg', 'sound/voice/lizard/lizard_scream_2.ogg', 'sound/voice/lizard/lizard_scream_3.ogg', 'sound/voice/lizard/lizard_scream_4.ogg')
+	else if(isexperiment(H))
+		return pick('sound/voice/experiment/expie_bark_1.ogg','sound/voice/experiment/expie_bark_2.ogg')
 
 /datum/emote/living/carbon/human/hiss //lizard
 	key = "hiss"
