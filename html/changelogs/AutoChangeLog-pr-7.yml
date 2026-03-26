@@ -1,0 +1,4 @@
+author: Peliex
+changes:
+  - {rscadd: Experiment race is now playable from the race selection menu}
+delete-after: true
