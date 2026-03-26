@@ -54,6 +54,9 @@ GLOBAL_LIST_EMPTY(elzu_horns_list)
 GLOBAL_LIST_EMPTY(tails_list_elzu)
 GLOBAL_LIST_EMPTY(animated_tails_list_elzu)
 
+GLOBAL_LIST_EMPTY(tails_list_experiment)
+GLOBAL_LIST_EMPTY(headspikes_list)
+
 GLOBAL_LIST_INIT(color_list_ethereal, list(
 	"Red" = "ff4d4d",
 	"Faint Red" = "ffb3b3",

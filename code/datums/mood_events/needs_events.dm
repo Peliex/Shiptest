@@ -73,6 +73,11 @@
 	mood_change = -6
 	timeout = 4 MINUTES
 
+/datum/mood_event/worst_food
+	description = span_warning("That was the worst thing I have ever eaten!")
+	mood_change = -8
+	timeout = 4 MINUTES
+
 /datum/mood_event/breakfast
 	description = span_nicegreen("Nothing like a hearty breakfast to start the shift.")
 	mood_change = 2

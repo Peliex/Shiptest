@@ -392,6 +392,7 @@ ROUNDSTART_RACES felinid
 ROUNDSTART_RACES kepori
 ROUNDSTART_RACES rachnid
 ROUNDSTART_RACES vox
+ROUNDSTART_RACES experiment
 
 ## Races that are better than humans in some ways, but worse in others
 ROUNDSTART_RACES elzuose
@@ -428,7 +429,7 @@ OVERFLOW_CAP -1
 
 ## Starlight for exterior walls and breaches. Uncomment for starlight!
 ## This is disabled by default to make testing quicker, should be enabled on production servers or testing servers messing with lighting
-#STARLIGHT
+STARLIGHT
 
 ## Midround Antag (aka Mulligan antag) config options ###
 
@@ -504,7 +505,7 @@ MAX_OVERMAP_EVENTS 50
 MAX_OVERMAP_DYNAMIC_EVENTS 15
 
 ## Size of the overmap squared
-OVERMAP_SIZE 12
+OVERMAP_SIZE 15
 
 ## Which overmap generator to use
 ## Valid values are: "random", "solar_system"

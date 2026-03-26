@@ -94,6 +94,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							"ethcolor" = "9c3030",
 							"tail_lizard" = "Smooth",
 							"tail_human" = "None",
+							"tail_experiment" = "Default",
+							"experiment_headspikes" = "Default",
 							"face_markings" = "None",
 							"horns" = "None",
 							"ears" = "None",
@@ -1945,6 +1947,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_tail = input(user, "Choose your character's tail:", "Character Preference") as null|anything in GLOB.tails_list_human
 					if(new_tail)
 						features["tail_human"] = new_tail
+
+				if("tail_experiment")
+					var/new_tail
+					new_tail = input(user, "Choose your character's tail:", "Character Preference") as null|anything in GLOB.tails_list_human
+					if(new_tail)
+						features["tail_experiment"] = new_tail
+
+				if("experiment_headspikes")
+					var/new_headspikes
+					new_headspikes = input(user, "Choose your character's headspikes:", "Character Preference") as null|anything in GLOB.headspikes_list
+					if(new_headspikes)
+						features["experiment_headspikes"] = new_headspikes
 
 				if("face_markings")
 					var/new_face_markings

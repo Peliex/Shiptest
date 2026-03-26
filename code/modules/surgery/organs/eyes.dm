@@ -100,6 +100,43 @@
 	desc = "Very similar to human eyes in functionality, only visible difference being the different shade of white."
 	sclera_color = "fffec4"
 
+/obj/item/organ/eyes/lizard
+	name = "lizard eyes"
+	desc = "Very similar to human eyes in functionality, only visible difference being the different shade of white."
+	sclera_color = "ffffff"
+
+/obj/item/organ/eyes/experiment
+	name = "experiment eyes"
+	desc = "A set of eyes with blazing orange sclera."
+	eye_icon_state = "eyes_experiment"
+	var/obj/effect/dummy/lighting_obj/expie_glow
+
+/obj/item/organ/eyes/experiment/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = FALSE, initialising)
+	. = ..()
+	var/mob/living/carbon/human/expie = M
+	expie_glow = expie.mob_light(2.5, 1, "#ff5c00") //tried "#d99f82ff" originally, but it's not harsh enough to get an orange glow.
+	RegisterSignal(expie, SIGNAL_ADDTRAIT(TRAIT_EYESCLOSED), PROC_REF(eyes_closing))
+	RegisterSignal(expie, SIGNAL_REMOVETRAIT(TRAIT_EYESCLOSED), PROC_REF(eyes_opening))
+
+/obj/item/organ/eyes/experiment/Remove(mob/living/carbon/M, special = FALSE, drop_if_replaced = FALSE, initialising)
+	. = ..()
+	var/mob/living/carbon/human/expie = M
+	UnregisterSignal(expie, SIGNAL_ADDTRAIT(TRAIT_EYESCLOSED), PROC_REF(eyes_closing))
+	UnregisterSignal(expie, SIGNAL_REMOVETRAIT(TRAIT_EYESCLOSED), PROC_REF(eyes_opening))
+	if(expie_glow)
+		QDEL_NULL(expie_glow)
+
+/obj/item/organ/eyes/experiment/Destroy()
+	if(expie_glow)
+		QDEL_NULL(expie_glow)
+	return ..()
+
+/obj/item/organ/eyes/experiment/proc/eyes_closing()
+	expie_glow.set_light_on(FALSE)
+
+/obj/item/organ/eyes/experiment/proc/eyes_opening()
+	expie_glow.set_light_on(TRUE)
+
 /obj/item/organ/eyes/night_vision
 	name = "shadow eyes"
 	desc = "A spooky set of eyes that can see in the dark."

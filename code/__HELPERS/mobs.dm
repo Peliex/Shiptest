@@ -44,6 +44,10 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human)
 	if(!GLOB.tails_list_lizard.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard, GLOB.tails_list_lizard)
+	if(!GLOB.headspikes_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/headspikes/experiment, GLOB.headspikes_list)
+	if(!GLOB.tails_list_experiment.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/experiment, GLOB.tails_list_experiment)
 	if(!GLOB.face_markings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/face_markings, GLOB.face_markings_list)
 	if(!GLOB.horns_list.len)
@@ -125,6 +129,8 @@
 		"vox_head_quills" = pick(GLOB.vox_head_quills_list),
 		"vox_neck_quills" = pick(GLOB.vox_neck_quills_list),
 		"wings" = "None",
+		"tail_experiment" = pick(GLOB.tails_list_experiment),
+		"experiment_headspikes" = pick(GLOB.headspikes_list),
 	)
 
 /proc/random_hairstyle(gender)
